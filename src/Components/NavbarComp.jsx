@@ -32,7 +32,18 @@ export default function NavbarComp() {
         <nav>
             <div>
                 {/* Logo Here */}
-                <Link to="/"> <FaBlog></FaBlog> Books </Link>
+                <Link to="/" className='text-2xl font-bold text-blue-700 flex items-center gap-2'> 
+                <FaBlog className='inline-block'></FaBlog > Books </Link>
+
+                {/* nav items for large device */}
+
+                <ul className='md:flex space-x-12 hidden'>
+                    {
+                        navItem.map(({link,path})=><Link key={path} to={path} className='block text-base text-black uppercase cursor-pointer hover:text-blue-500'>{link}</Link>)
+                    }
+                </ul>
+
+
             </div>
         </nav>
     </header>
