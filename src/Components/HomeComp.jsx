@@ -1,12 +1,17 @@
 import React from 'react'
-import NavbarComp from './NavbarComp'
+import BannerComp from './BannerComp'
+import FavBooksComp from './FavBooksComp'
+
 
 export default function HomeComp() {
   return (
-    <div>
-      <nav>Book Store</nav>
-      <NavbarComp/>
-    </div>
+    <div className=''>
+      <BannerComp></BannerComp>
+      {/* <div className='h-screen'></div>
+      <div className='h-screen bg-red-500'></div> */}
+      <FavBooksComp></FavBooksComp>
+
+    </div> 
     
   )
 }
