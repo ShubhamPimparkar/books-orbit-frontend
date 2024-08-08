@@ -1,12 +1,12 @@
 import './App.css'
-import { Route,Routes } from 'react-router-dom'
+import { Outlet} from 'react-router-dom'
 function App() {
  
   return (
-     <div>
-      <h1>Books Orbit</h1>
-
-     </div>
+    <>
+    <h1>Site logo</h1>
+    <Outlet/>
+    </>
   )
 }
 
