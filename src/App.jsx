@@ -1,10 +1,11 @@
 import './App.css'
 import { Outlet} from 'react-router-dom'
+import NavbarComp from './Components/NavbarComp'
 function App() {
  
   return (
     <>
-    <h1>Books Orbit</h1>
+    <NavbarComp></NavbarComp>
     <Outlet/>
     </>
   )
