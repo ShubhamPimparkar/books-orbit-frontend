@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import {FaBlog} from "react-icons/fa6"
+import {FaBarsStaggered, FaBlog} from "react-icons/fa6"
 export default function NavbarComp() {
     const[isMenuOpen,setIsMenuOpen] = useState(false);
     const[isSticky,setSticky] = useState(false);
@@ -42,7 +42,9 @@ export default function NavbarComp() {
                         navItem.map(({link,path})=><Link key={path} to={path} className='block text-base text-black uppercase cursor-pointer hover:text-blue-500'>{link}</Link>)
                     }
                 </ul>
-
+                <div className='space-x-12 hidden lg:flex items-center'> 
+                    <button><FaBarsStaggered className='w-5 hover:text-blue-700'/></button>
+                </div>
 
             </div>
         </nav>
