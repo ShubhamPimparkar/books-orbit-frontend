@@ -7,7 +7,7 @@ export default function BannerComp() {
             <div className='flex flex-col md:flex-row justify-between items-center gap-12 py-40 '>
 
                 {/* Left */}
-                <div className='md:w-1/2 h-full space-y-7'>
+                <div className='md:w-1/2 h-full space-y-8'>
 
                     <h2 className='text-5xl font-bold leading-snug text-black'>Buy and Sell Books <span className='text-blue-700'>for best Prices</span> </h2>
                     <p className='md:w-4/5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem nulla velit molestiae ut veritatis id quam dolores! Fugiat odio quasi cum doloremque libero voluptates, nesciunt, quos quod iure qui hic.</p>
