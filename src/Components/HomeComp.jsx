@@ -1,6 +1,7 @@
 import React from 'react'
 import BannerComp from './BannerComp'
 import FavBooksComp from './FavBooksComp'
+import { PromoBanner } from './PromoBanner'
 
 
 export default function HomeComp() {
@@ -10,8 +11,8 @@ export default function HomeComp() {
       {/* <div className='h-screen'></div>
       <div className='h-screen bg-red-500'></div> */}
       <FavBooksComp></FavBooksComp>
+      <PromoBanner></PromoBanner>
+    </div>
 
-    </div> 
-    
   )
 }

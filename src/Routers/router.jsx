@@ -10,6 +10,8 @@ import Dashboard from "../dashboard/Dashboard";
 import UploadBooks from "../dashboard/UploadBooks";
 import ManageBooks from "../dashboard/ManageBooks";
 import EditBooks from "../dashboard/EditBooks";
+import { SingleBook } from "../Components/SingleBook";
+import { CartComp } from "../Components/CartComp";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -26,6 +28,15 @@ const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <ShopComp />
+            },
+            {
+                path: '/cart',
+                element: <CartComp />
+            },
+            {
+                path: '/books/:id',
+                element: <SingleBook />,
+                loader: ({params})=> fetch(`http://localhost:8080/books/${params.id}`)
             }
         ]
     },

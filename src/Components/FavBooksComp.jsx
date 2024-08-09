@@ -7,8 +7,8 @@ export default function FavBooksComp() {
     const fetchBooks = async () => {
         try {
             const response = await axios.get('http://localhost:8080/books');
-            // console.log(response.data)
-            setBooks(response.data);
+        
+            setBooks(response.data.slice(0,5));
         } catch (error) {
             console.error(error);
         }
