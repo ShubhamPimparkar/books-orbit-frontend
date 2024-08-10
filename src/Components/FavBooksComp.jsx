@@ -8,7 +8,7 @@ export default function FavBooksComp() {
         try {
             const response = await axios.get('http://localhost:8080/books');
         
-            setBooks(response.data.slice(0,5));
+            setBooks(response.data);
         } catch (error) {
             console.error(error);
         }

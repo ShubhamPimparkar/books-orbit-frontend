@@ -56,10 +56,10 @@ export const BookCardComp = ({ headline, booksprop }) => {
                                 <div>
                                     <div>
                                     <h3 className='font-bold text-blue-700'>{book.bookName}</h3>
-                                    <p>{book.description}</p>
+                                    {/* <p>{book.description}</p> */}
                                     </div>
                                     <div>
-                                        <p className='font-bold'>{book.price}$</p>
+                                        <p className='font-bold'>₹{book.price}</p>
                                     </div>
                                 </div>
                             </Link>

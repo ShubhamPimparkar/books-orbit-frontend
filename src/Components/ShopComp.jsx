@@ -59,8 +59,8 @@ const ShopComp = () => {
               imgSrc={book.imgUrl}
               href={`/books/${book.bookId}`}
             >
-              <figure className="relative">
-                <div className="badge badge-secondary font-semibold text-xs text-red-500 absolute top-3 right-3">
+              <figure className="">
+                <div className="badge badge-secondary font-bold text-xs text-red-500 ">
            
                   {categories[book.categoryId.cateId] || 'Loading..'}
                 </div>
@@ -70,6 +70,7 @@ const ShopComp = () => {
                 <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                   {book.bookName}
                 </h5>
+                <p className='font-semibold text-xs mt-2'>By : {book.authorName}</p>
               </Link>
               <div className="mb-5 mt-2.5 flex items-center">
                 <span className="mr-2 rounded bg-amber-300 py-0.5 text-xs font-semibold text-black dark:bg-cyan-200 dark:text-cyan-800">
@@ -80,7 +81,7 @@ const ShopComp = () => {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                  {book.price}$
+                ₹{book.price}
                 </span>
                 <Link
                   to=""
