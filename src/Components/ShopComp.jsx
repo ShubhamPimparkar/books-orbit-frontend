@@ -39,7 +39,7 @@ const ShopComp = () => {
 
   const addtocart = async (bookid) => {
     try {
-      const response = await axios.post(`http://localhost:8080/cart/public/carts/3/books/${bookid}/quantity/1`)
+      const response = await axios.post(`http://localhost:8080/cart/public/carts/5/books/${bookid}/quantity/1`)
       console.log(response);
       fetchData();
     } catch (error) {
@@ -61,7 +61,7 @@ const ShopComp = () => {
             >
               <figure className="relative">
                 <div className="badge badge-secondary font-semibold text-xs text-red-500 absolute top-3 right-3">
-                  {/* Display Category Name */}
+           
                   {categories[book.categoryId.cateId] || 'Loading..'}
                 </div>
               

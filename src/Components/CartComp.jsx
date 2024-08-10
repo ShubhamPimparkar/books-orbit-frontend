@@ -10,7 +10,7 @@ export const CartComp = () => {
 
     const fetchCart = async () => {
         try {
-            const cartResponse = await fetch("http://localhost:8080/cart/3");
+            const cartResponse = await fetch("http://localhost:8080/cart/5");
             const cartData = await cartResponse.json();
             setCarts(cartData);
             
@@ -24,7 +24,7 @@ export const CartComp = () => {
             const cartitemResponse = await fetch(`http://localhost:8080/cart/cartitems/${cartid}`);
             const cartitemData = await cartitemResponse.json();
             setCartItems(cartitemData);
-            console.log(cartitemData);
+            // console.log(cartitemData);
         } catch (error) {
           console.error('Error fetching cartItems:', error);
         }
@@ -33,7 +33,7 @@ export const CartComp = () => {
     useEffect(()=>{
 
         fetchCart();
-        fetchCartItems(3);
+        fetchCartItems(5);
 
     },[])
 
@@ -47,12 +47,12 @@ export const CartComp = () => {
       <div className="flex flex-col md:flex-row justify-between md:gap-8 gap-4">
         <div className="space-y-6 md:w-2/3">
           {cartItems.length ? (
-            cartItems.map((p) =>  <CartItem product={p.product} cartitem={p} key={p.cartItemId} /> )
+            cartItems.map((p) =>  <CartItem product={p.product} cartitem={p} key={p.cartItemId}  onUpdateCart={fetchCartItems(5)} /> )
           ) : (
             <div>No Product In Your Cart !!!!!!!!!!</div>
           )}
         </div>
-        <div className="md:w-1/3"><Billing /></div>
+        <div className="md:w-1/3"><Billing cart={carts}  /></div>
       </div>
     </div>
   </main>
