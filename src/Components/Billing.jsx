@@ -1,7 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const Billing = ({cart}) => {
-  
+  const navigate = useNavigate();
+  const checkout=()=>{
+    navigate(`/checkout/${cart.totalPrice}`)
+  }
   const totalBillings = (subTotal) =>{
     if(subTotal > 0) {
       return subTotal + 60
@@ -26,7 +30,7 @@ export const Billing = ({cart}) => {
         <p className="text-sm text-gray-700">including GST</p>
       </div>
     </div>
-    <button className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
+    <button className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600" onClick={checkout}>
       Check out
     </button>
   </div>

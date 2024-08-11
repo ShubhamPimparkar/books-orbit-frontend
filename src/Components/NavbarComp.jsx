@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { FaBarsStaggered, FaBlog, FaXmark } from "react-icons/fa6"
+import { FaBarsStaggered , FaXmark } from "react-icons/fa6"
+import {  GiBurningBook } from "react-icons/gi"
 export default function NavbarComp() {
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSticky, setSticky] = useState(false);
     const toggleMenu = () => {
@@ -33,8 +35,8 @@ export default function NavbarComp() {
             <nav className={`py-5 lg:px-24 px-4 ${isSticky ? "sticky top-0 right-0 left-0 bg-blue-300" : ""}`}>
                 <div className='flex justify-between items-center text-base gap-8'>
                     {/* Logo Here */}
-                    <Link to="/" className='text-2xl font-bold text-blue-700 flex items-center gap-2'>
-                        <FaBlog className='inline-block'></FaBlog > Books </Link>
+                    <Link to="/" className='text-2xl font-bold text-purple-700 flex items-center gap-2'>
+                        <GiBurningBook className='inline-block '></GiBurningBook > Books Orbit </Link>
 
                     {/* nav items for large device */}
 

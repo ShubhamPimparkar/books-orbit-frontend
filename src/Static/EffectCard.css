@@ -1,42 +1,43 @@
-
 .banner .swiper {
-    width: 240px;
-    height: 320px;
-  }
-  
- .banner .swiper-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff;
-  }
-  
- .banner .swiper-slide:nth-child(1n) {
-   background-image: url("src/bookimgs/1.jpg");
-  }
-  
- .banner .swiper-slide:nth-child(2n) {
-    background-image: url("src/bookimgs/2.jpg");
-  }
-  
- .banner .swiper-slide:nth-child(3n) {
-    background-image: url("src/bookimgs/3.jpg");
-  }
-  
- .banner .swiper-slide:nth-child(4n) {
-    background-image: url("src/bookimgs/4.jpg");
-  }
-  
- .banner .swiper-slide:nth-child(5n) {
-    background-image: url("src/bookimgs/5.jpg");
- }
-  
- .banner .swiper-slide:nth-child(6n) {
-    background-image: url("src/bookimgs/6.jpg");
-  }
-  
+  width: 240px;
+  height: 320px;
+}
 
-  
+.banner .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.banner .swiper-slide:nth-child(1n) {
+  background-size:cover;
+  background-image: url("https://i.pinimg.com/564x/b6/c9/21/b6c921a2aa9e5c069224b240d238fe2d.jpg");
+}
+
+.banner .swiper-slide:nth-child(2n) {
+  background-size:cover;
+  background-image: url("https://i.pinimg.com/564x/36/33/41/36334168aa9c9dd0371d5469470fcdfb.jpg");
+}
+
+.banner .swiper-slide:nth-child(3n) {
+  background-size:cover;
+  background-image: url("https://i.pinimg.com/564x/1d/6f/e4/1d6fe444e860be0b62f53c3e8bf09454.jpg");
+}
+
+.banner .swiper-slide:nth-child(4n) {
+  background-image: url("https://i.pinimg.com/564x/54/6c/8b/546c8bd801d8bab2d223c3d9d26a9500.jpg");
+}
+
+.banner .swiper-slide:nth-child(5n) {
+  background-size:cover;
+  background-image: url("https://i.pinimg.com/564x/87/4f/e3/874fe36d7c1883733b0ba0ca9216fafb.jpg");
+}
+
+.banner .swiper-slide:nth-child(6n) {
+  background-size:cover;
+  background-image: url("https://i.pinimg.com/564x/60/86/09/608609cb613363a4bec0992fd87c1f9f.jpg");
+}

@@ -12,6 +12,8 @@ import ManageBooks from "../dashboard/ManageBooks";
 import EditBooks from "../dashboard/EditBooks";
 import { SingleBook } from "../Components/SingleBook";
 import { CartComp } from "../Components/CartComp";
+import { CheckOutComp } from "../Components/CheckOutComp";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
             {
                 path: '/cart',
                 element: <CartComp />
+            },
+            {
+                path: '/checkout/:price',
+                element: <CheckOutComp />,
+                loader: async ({ params }) => {
+                    const price = parseFloat(params.price);
+                    return { price };
+                }
             },
             {
                 path: '/books/:id',

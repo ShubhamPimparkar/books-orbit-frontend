@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Card } from "flowbite-react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { toast  } from 'react-toastify';
 
 const ShopComp = () => {
 
@@ -41,6 +42,7 @@ const ShopComp = () => {
     try {
       const response = await axios.post(`http://localhost:8080/cart/public/carts/5/books/${bookid}/quantity/1`)
       console.log(response);
+      toast.success("Added to cart")
       fetchData();
     } catch (error) {
       console.error('Error fetching category:', error);
@@ -49,7 +51,9 @@ const ShopComp = () => {
 
   return (
     <div className='mt-20 px-4 lg:px-24'>
+      <h3 className="mb-5 ml-2 mt-11 text-3xl text-blue-700 font-bold">Shop Items</h3>
       <div className='grid gap-8 my-12 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 grid-cols-1'>
+   
         {
           books.map(book => (
             <Card
@@ -76,8 +80,6 @@ const ShopComp = () => {
                 <span className="mr-2 rounded bg-amber-300 py-0.5 text-xs font-semibold text-black dark:bg-cyan-200 dark:text-cyan-800">
                   Quantity - {book.quantity}
                 </span>
-
-                
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-3xl font-bold text-gray-900 dark:text-white">
@@ -89,6 +91,7 @@ const ShopComp = () => {
                   onClick={()=>addtocart(book.bookId)}
                 >
                   Add to cart
+                 
                 </Link>
               </div>
             </Card>
