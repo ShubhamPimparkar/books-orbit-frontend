@@ -27,6 +27,7 @@ export default function NavbarComp() {
     const navItem = [
         { link: "home", path: "/" },
         { link: "shop", path: "/shop" },
+        { link: "Favourite", path: "/favs" },
         { link: "cart", path: "/cart" },
         { link: "admin", path: "/admin/dashboard" },
         { link: "login", path: "/login" },

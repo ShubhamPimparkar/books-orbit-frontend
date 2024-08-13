@@ -6,14 +6,27 @@ import { toast  } from 'react-toastify';
 export const SingleBook = () => {
     const { bookId, price, description, authorName, bookName, quantity, imgUrl } = useLoaderData();
     const userId = localStorage.getItem("userid");
+  
     const addtocart = async (bookid) => {
         try {
           const response = await axios.post(`http://localhost:8080/cart/public/carts/${userId}/books/${bookid}/quantity/1`)
           console.log(response);
           toast.success("Added to cart")
-          fetchData();
+       
         } catch (error) {
           console.error('Error fetching category:', error);
+        }
+      };
+    const addtofav = async (bookid) => {
+        try {
+            console.log(userId)
+            console.log(bookid)
+          const response = await axios.post(`http://localhost:8080/books/addtofav/${bookid}/${userId}`)
+          console.log(response);
+          toast.success("Added to Favs")
+       
+        } catch (error) {
+          console.error('Error adding to fav:', error);
         }
       };
     return (
@@ -61,15 +74,13 @@ export const SingleBook = () => {
 
                             {/* Add to Cart */}
                             <div class="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8">
-                                <a
-                                    href="#"
-                                    title=""
+                                <button
+                                    onClick={()=>addtofav(bookId)}
                                     className="flex items-center justify-center py-2.5 px-5 text-sm font-medium focus:outline-none bg-cyan-600 rounded-lg border border-gray-200 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100  text-white dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 hover:bg-cyan-500"
-                                    role="button"
+                                    type="button"
                                 >
-
                                     Add to favorites
-                                </a>
+                                </button>
 
                                 <button
 

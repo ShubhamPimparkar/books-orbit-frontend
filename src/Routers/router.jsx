@@ -14,6 +14,9 @@ import { SingleBook } from "../Components/SingleBook";
 import { CartComp } from "../Components/CartComp";
 import { CheckOutComp } from "../Components/CheckOutComp";
 import { Login } from "../Components/Login";
+import { FavouriteComp } from "../Components/FavouriteComp";
+
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -22,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <HomeComp />
+            },
+            {
+                path: '/favs',
+                element: <FavouriteComp />
             },
           
             {
