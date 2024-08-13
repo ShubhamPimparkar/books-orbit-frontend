@@ -26,8 +26,8 @@ export const Login = () => {
             });
 
             const userId = response.data.userId;
-            localStorage.setItem("userid",JSON.stringify(userId));
             if (userId) {
+                localStorage.setItem("userid",JSON.stringify(userId));
                 toast.success("Successfully logged in");
                 navigate("/"); // Redirect to home page or other destination
             } else {
