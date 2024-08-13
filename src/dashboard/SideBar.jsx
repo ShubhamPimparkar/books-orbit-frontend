@@ -6,7 +6,7 @@ import userImg from '../assets/react.svg'
 
 export const SideBar = () => {
     return (
-        <Sidebar aria-label="Sidebar with content separator example">
+        <Sidebar aria-label="Sidebar with content separator example" className="bg-gray-400" >
             <Sidebar.Logo href="#" img={userImg} imgAlt="BooksOrbit logo ">
                 BooksOrbit
             </Sidebar.Logo>
@@ -34,7 +34,7 @@ export const SideBar = () => {
                         Logout
                     </Sidebar.Item>
                 </Sidebar.ItemGroup>
-                {/* <Sidebar.ItemGroup>
+                <Sidebar.ItemGroup>
                     <Sidebar.Item href="#" icon={HiChartPie}>
                         Upgrade to Pro
                     </Sidebar.Item>
@@ -44,7 +44,7 @@ export const SideBar = () => {
                     <Sidebar.Item href="#" icon={BiBuoy}>
                         Help
                     </Sidebar.Item>
-                </Sidebar.ItemGroup> */}
+                </Sidebar.ItemGroup>
             </Sidebar.Items>
         </Sidebar>
     )
