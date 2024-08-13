@@ -5,9 +5,10 @@ import { Link, useLoaderData } from 'react-router-dom'
 import { toast  } from 'react-toastify';
 export const SingleBook = () => {
     const { bookId, price, description, authorName, bookName, quantity, imgUrl } = useLoaderData();
+    const userId = localStorage.getItem("userid");
     const addtocart = async (bookid) => {
         try {
-          const response = await axios.post(`http://localhost:8080/cart/public/carts/5/books/${bookid}/quantity/1`)
+          const response = await axios.post(`http://localhost:8080/cart/public/carts/${userId}/books/${bookid}/quantity/1`)
           console.log(response);
           toast.success("Added to cart")
           fetchData();

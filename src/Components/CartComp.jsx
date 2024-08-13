@@ -8,9 +8,11 @@ export const CartComp = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const userId = localStorage.getItem("userid");
+
   const fetchCart = useCallback(async () => {
     try {
-      const response = await fetch(`http://localhost:8080/cart/5`);
+      const response = await fetch(`http://localhost:8080/cart/${userId}`);
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
       setCarts(data);
@@ -22,7 +24,7 @@ export const CartComp = () => {
 
   const fetchCartItems = useCallback(async () => {
     try {
-      const response = await fetch(`http://localhost:8080/cart/cartitems/5`);
+      const response = await fetch(`http://localhost:8080/cart/cartitems/${userId}`);
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
       setCartItems(data);
@@ -57,7 +59,7 @@ export const CartComp = () => {
 
   const handleRemoveFromCart = async (cartItemId, bookId) => {
     try {
-      const response = await fetch(`http://localhost:8080/cart/cartId/5/bookId/${bookId}`, { method: 'DELETE' });
+      const response = await fetch(`http://localhost:8080/cart/cartId/${userId}/bookId/${bookId}`, { method: 'DELETE' });
       if (!response.ok) throw new Error('Network response was not ok');
       await fetchCartItems(); // Refresh cart items
       await fetchCart(); // Refresh cart

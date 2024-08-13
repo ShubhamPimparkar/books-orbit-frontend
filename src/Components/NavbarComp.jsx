@@ -28,7 +28,8 @@ export default function NavbarComp() {
         { link: "home", path: "/" },
         { link: "shop", path: "/shop" },
         { link: "cart", path: "/cart" },
-        { link: "admin", path: "/admin/dashboard" }
+        { link: "admin", path: "/admin/dashboard" },
+        { link: "login", path: "/login" },
     ]
     return (
         <header className='w-full bg-transparent fixed top-0 left-0 right-0 transition-all ease-in duration-300'>

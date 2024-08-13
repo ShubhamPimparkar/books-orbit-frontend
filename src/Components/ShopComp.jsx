@@ -9,7 +9,7 @@ const ShopComp = () => {
   const [books, setBooks] = useState([]);
   // const [cate, setCate] = useState([]);
   const [categories, setCategories] = useState({});
-
+  const userId = localStorage.getItem("userid");
   const fetchData = async () => {
     try {
       // Fetch books
@@ -40,7 +40,7 @@ const ShopComp = () => {
 
   const addtocart = async (bookid) => {
     try {
-      const response = await axios.post(`http://localhost:8080/cart/public/carts/5/books/${bookid}/quantity/1`)
+      const response = await axios.post(`http://localhost:8080/cart/public/carts/${userId}/books/${bookid}/quantity/1`)
       console.log(response);
       toast.success("Added to cart")
       fetchData();

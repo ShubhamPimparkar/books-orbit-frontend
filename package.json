@@ -10,12 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-   
+    "@tailwindcss/forms": "^0.5.7",
     "axios": "^1.7.3",
     "flowbite-react": "^0.10.1",
     "headlessui": "^0.0.0",
     "heroicons": "^2.1.5",
-   
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
     "react-dom": "^18.3.1",
