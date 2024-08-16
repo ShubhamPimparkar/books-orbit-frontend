@@ -1,25 +1,29 @@
+import axios from 'axios';
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
 export const CheckOutComp = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    cardNumber: '',
-    expirationDate: '',
-    cvv: '',
-  });
+  const nav = useNavigate()
   const { price } = useLoaderData();
+  const [formData, setFormData] = useState({
+    email:'',
+    totalAmount:price+60,
+    orderStatus:"PLACED"
+
+  });
+  // 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
+    const res = axios.post(`http://localhost:8080/orders/users/${formData.email}/total/${formData.totalAmount}/status/${formData.orderStatus}`)
     toast.success("Order Succes")
-    console.log('Form submitted:', formData);
+    console.log('Form submitted:', res);
+    nav("/orderplaced")
   };
-
 
   return (
     <div className="max-w-4xl mt-24 mx-auto p-6 bg-white rounded-lg shadow-md">
@@ -31,7 +35,7 @@ export const CheckOutComp = () => {
           <span className="text-lg font-bold text-gray-900">${(price+60).toFixed(2)}</span>
         </div>
       </div>
-      <form onSubmit={handleSubmit} method='post' className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
@@ -39,8 +43,8 @@ export const CheckOutComp = () => {
               type="text"
               id="name"
               name="name"
-              value={formData.name}
-              onChange={handleChange}
+           ss
+              
               required
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
@@ -64,8 +68,8 @@ export const CheckOutComp = () => {
             type="text"
             id="cardNumber"
             name="cardNumber"
-            value={formData.cardNumber}
-            onChange={handleChange}
+           
+
             required
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
@@ -77,8 +81,8 @@ export const CheckOutComp = () => {
               type="text"
               id="expirationDate"
               name="expirationDate"
-              value={formData.expirationDate}
-              onChange={handleChange}
+           
+            
               required
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
@@ -89,8 +93,8 @@ export const CheckOutComp = () => {
               type="text"
               id="cvv"
               name="cvv"
-              value={formData.cvv}
-              onChange={handleChange}
+              
+            
               required
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />

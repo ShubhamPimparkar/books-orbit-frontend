@@ -15,8 +15,9 @@ import { CartComp } from "../Components/CartComp";
 import { CheckOutComp } from "../Components/CheckOutComp";
 import { Login } from "../Components/Login";
 import { FavouriteComp } from "../Components/FavouriteComp";
-
-
+import { ManageUser } from "../dashboard/ManageUser";
+import { RegisterComp } from "../Components/RegisterComp";
+import { OrderPlaced } from "../Components/OrderPlaced";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -30,10 +31,10 @@ const router = createBrowserRouter([
                 path: '/favs',
                 element: <FavouriteComp />
             },
-          
+
             {
                 path: '/admin/dashboard',
-                element: <Dashboard/>
+                element: <Dashboard />
             },
             {
                 path: '/shop',
@@ -54,15 +55,29 @@ const router = createBrowserRouter([
             {
                 path: '/books/:id',
                 element: <SingleBook />,
-                loader: ({params})=> fetch(`http://localhost:8080/books/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:8080/books/${params.id}`)
             }
         ]
     },
     {
-    path: "/login",
-    element: <Login />,
-  
-    
+        path: "/login",
+        element: <Login />,
+
+
+    },
+    {
+        path: "/register",
+        element: <RegisterComp
+        />,
+
+
+    },
+    {
+        path: "/orderplaced",
+        element: <OrderPlaced
+        />,
+
+
     },
     {
         path: "/admin/dashboard",
@@ -70,7 +85,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/admin/dashboard",
-                element: <Dashboard />
+                element: <UploadBooks />
             },
             {
                 path: "/admin/dashboard/upload",
@@ -78,12 +93,16 @@ const router = createBrowserRouter([
             },
             {
                 path: "/admin/dashboard/manage",
-                element: <ManageBooks/>
+                element: <ManageBooks />
+            },
+            {
+                path: "/admin/dashboard/users",
+                element: <ManageUser />
             },
             {
                 path: "/admin/dashboard/edit/:bookId",
-                element: <EditBooks/>,
-                loader:({params})=>fetch(`http://localhost:8080/books/${params.bookId}`)
+                element: <EditBooks />,
+                loader: ({ params }) => fetch(`http://localhost:8080/books/${params.bookId}`)
             }
 
         ]

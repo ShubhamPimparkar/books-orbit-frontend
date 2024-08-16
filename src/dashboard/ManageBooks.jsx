@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Table } from "flowbite-react";
-import { Link, useNavigate } from 'react-router-dom';
 
 const ManageBooks = () => {
+
   // const navigate = useNavigate();
   const [allBooks, setAllBooks] = useState([]);
 
@@ -18,27 +18,27 @@ const ManageBooks = () => {
         }
       })
       .catch(error => console.error('Error fetching books:', error));
+
   }, []);
 
+  // Delete a book
   // Delete a book
   const handleDelete = (bookId) => {
     fetch(`http://localhost:8080/books/${bookId}`, {
       method: "DELETE",
     })
-    .then(res => res.json())
-    .then(data => {
-      alert("Book is deleted successfully");
-
-      if (Array.isArray(data)) {
-        setAllBooks(data); 
-      } else {
-        setAllBooks(prevBooks => prevBooks.filter(book => book.bookId !== bookId));
-      }
-
-      // navigate("/admin/dashboard/manage");
-    })
-    .catch(error => console.error('Error deleting book:', error));
+      .then(res => {
+        if (res.ok) {
+          // Remove the deleted book from the allBooks state
+          setAllBooks(prevBooks => prevBooks.filter(book => book.bookId !== bookId));
+          toast.success("Book is deleted successfully");
+        } else {
+          console.error('Failed to delete book:', res.status);
+        }
+      })
+      .catch(error => console.error('Error deleting book:', error));
   }
+
 
   return (
     <div className="px-4 my-12">
@@ -51,7 +51,7 @@ const ManageBooks = () => {
           <Table.HeadCell>Quantity</Table.HeadCell>
           <Table.HeadCell>Price</Table.HeadCell>
           <Table.HeadCell>
-            <span>Edit/Manage</span>
+            <span>Manage</span>
           </Table.HeadCell>
         </Table.Head>
         {
@@ -67,9 +67,9 @@ const ManageBooks = () => {
                   <Table.Cell>{book.quantity}</Table.Cell>
                   <Table.Cell>{"\u20B9"}{book.price}</Table.Cell>
                   <Table.Cell>
-                    <Link to={`/admin/dashboard/edit/${book.bookId}`} className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+                    {/* <Link to={`/admin/dashboard/edit/${book.bookId}`} className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
                       Edit
-                    </Link>
+                    </Link> */}
                     <button onClick={() => handleDelete(book.bookId)} className='bg-red-600 py-1 font-semibold text-white rounded-lg px-4 ml-5'>Delete</button>
                   </Table.Cell>
                 </Table.Row>

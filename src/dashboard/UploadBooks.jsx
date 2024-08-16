@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { Button, Checkbox, Label, Select, Textarea, TextInput } from "flowbite-react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 const UploadBooks = () => {
 
+  const nav = useNavigate()
   const bookCategories = [
     "Fiction",
     "Drama",
@@ -17,29 +20,30 @@ const UploadBooks = () => {
     console.log(event.target.value);
     setSelectedBookCategory(event.target.value);
   }
-
+  const userId = localStorage.getItem("userid");
   //handle book submission
   const handleBookSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
     const bookName = form.bookName.value;
     const authorName = form.authorName.value;
-    const sellerId = form.sellerId.value;
+    const sellerId = userId;
     const categoryId = form.categoryId.value;
     const imgUrl = form.imgUrl.value;
-    const categoryName = form.categoryName.value;
+    // const categoryName = form.categoryName.value;
     const price = form.price.value;
     const description = form.description.value;
     const quantity = form.quantity.value;
 
     const bookObj = {
-      bookName, authorName, sellerId, categoryId, imgUrl, categoryName, price, description, quantity
+      bookName, authorName, sellerId, categoryId, imgUrl, price, description, quantity
     }
     console.log(bookObj)
 
     //send data to db
     try {
-      const response = await fetch("http://localhost:8080/books", {
+      // console.log("image",imgUrl)
+      const response = await fetch("http://localhost:8080/books/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +56,8 @@ const UploadBooks = () => {
       }
 
       const data = await response.json();
-      alert("Book updated successfully!");
+      toast.success("Book updated successfully!");
+      nav("/admin/dashboard/manage")
       // form.reset();
     } catch (error) {
       console.error("There was an error!", error);
@@ -86,12 +91,12 @@ const UploadBooks = () => {
 
         {/* seller id and category id */}
         <div className='flex gap-8'>
-          <div className='lg:w-1/3'>
+          {/* <div className='lg:w-1/3'>
             <div className="mb-2 block">
               <Label htmlFor="seller" value="Seller Id" />
             </div>
             <input className="border-2 border-black-500 rounded-md p-1" id="sellerId" name='sellerId' type="number" placeholder="Enter Seller Id" required />
-          </div>
+          </div> */}
 
           {/* Category Id*/}
           <div className='lg:w-1/3'>
@@ -99,6 +104,12 @@ const UploadBooks = () => {
               <Label htmlFor="categoryId" value="Category Id " />
             </div>
             <input className="border-2 border-black-500 rounded-md p-1" id="categoryId" name='categoryId' type="number" placeholder="Enter Book categoryId" required />
+          </div>
+          <div className='lg:w-1/3'>
+            <div className="mb-2 block">
+              <Label htmlFor="quantity" value="Quantity" />
+            </div>
+            <input className="border-2 border-black-500 rounded-md p-1" id="quantity" name='quantity' type="number" placeholder="Enter Book Quantity" required />
           </div>
         </div>
 
@@ -108,22 +119,27 @@ const UploadBooks = () => {
             <div className="mb-2 block">
               <Label htmlFor="imgUrl" value="Image URL" />
             </div>
-            <input className="border-2 border-black-500 rounded-md p-1" id="imgUrl" name='imgUrl' type="file" placeholder="Enter image URL" required />
+            <input className="border-2 border-black-500 rounded-md p-1" id="imgUrl" name='imgUrl' type="text" placeholder="Enter image URL" required />
           </div>
-
-          {/* select category */}
           <div className='lg:w-1/3'>
+            <div className="mb-1 block">
+              <Label htmlFor="description" value="Book Description" />
+            </div>
+            <Textarea name="description" id="description" placeholder='Write book description...' required className='w-full' rows={5} />
+          </div>
+          {/* select category */}
+          {/* <div className='lg:w-1/3'>
             <div className="mb-2 block">
               <Label htmlFor="inputState" value="Book Category" />
             </div>
-            <Select id='inputState' name='categoryName' className='w-full rounded' value={selectedBookCategory} onChange={handleChangeSelectedValue}>
+             <Select id='inputState' name='categoryName' className='w-full rounded' value={selectedBookCategory} onChange={handleChangeSelectedValue}>
               {
                 bookCategories.map((option) =>
                   <option className='p-5' key={option} value={option}>{option}</option>
                 )
               }
-            </Select>
-          </div>
+            </Select> 
+          </div> */}
         </div>
 
         {/* book price  and quantity*/}
@@ -136,27 +152,17 @@ const UploadBooks = () => {
           </div>
 
           {/* Quantity */}
-          <div className='lg:w-1/3'>
-            <div className="mb-2 block">
-              <Label htmlFor="quantity" value="Quantity" />
-            </div>
-            <input className="border-2 border-black-500 rounded-md p-1" id="quantity" name='quantity' type="number" placeholder="Enter Book Quantity" required />
-          </div>
-        </div>
-
-        {/*Book Description and submit button*/}
-        <div className='flex gap-8'>
-          <div className='lg:w-1/3'>
-            <div className="mb-1 block">
-              <Label htmlFor="description" value="Book Description" />
-            </div>
-            <Textarea name="description" id="description" placeholder='Write book description...' required className='w-full' rows={5} />
-          </div>
+          <div className='flex gap-8'>          
           {/* Submit Button */}
           <div>
             <button type="submit" className="lg:w-36 mx-16 h-9 mt-16 bg-blue-500 text-white font-bold py-2 px-4 rounded">Upload Book</button>
           </div>
         </div>
+          
+        </div>
+
+        {/*Book Description and submit button*/}
+        
 
       </form>
     </div>

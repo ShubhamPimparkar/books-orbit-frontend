@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export const Login = () => {
@@ -15,6 +15,8 @@ export const Login = () => {
     };
 
     const navigate = useNavigate();
+    let isLogin = false;
+    localStorage.setItem("isLogin",isLogin);
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
@@ -26,8 +28,11 @@ export const Login = () => {
             });
 
             const userId = response.data.userId;
+          
             if (userId) {
                 localStorage.setItem("userid",JSON.stringify(userId));
+                isLogin = true;
+                localStorage.setItem("isLogin",isLogin);
                 toast.success("Successfully logged in");
                 navigate("/"); // Redirect to home page or other destination
             } else {
@@ -41,7 +46,7 @@ export const Login = () => {
 
     return (
         <div>
-            <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+            <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     {/* <img
                         alt="Logo"
@@ -103,9 +108,9 @@ export const Login = () => {
 
                     <p className="mt-10 text-center text-sm text-gray-500">
                         Not a member?{' '}
-                        <a href="#" className="font-semibold leading-6 text-blue-700 hover:text-blue-500">
+                        <Link to="/register" className="font-semibold leading-6 text-blue-700 hover:text-blue-500">
                             Register here
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>

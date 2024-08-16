@@ -18,7 +18,7 @@ export const CartComp = () => {
       setCarts(data);
     } catch (error) {
       console.error('Error fetching cart:', error);
-      setError('Failed to fetch cart data');
+      // setError('Failed to fetch cart data');
     }
   }, []);
 
@@ -30,7 +30,7 @@ export const CartComp = () => {
       setCartItems(data);
     } catch (error) {
       console.error('Error fetching cart items:', error);
-      setError('Failed to fetch cart items');
+      // setError('Failed to fetch cart items');
     }
   }, []);
 
