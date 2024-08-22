@@ -12,7 +12,7 @@ export const CheckOutComp = () => {
     orderStatus:"PLACED"
 
   });
-  // 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -43,7 +43,7 @@ export const CheckOutComp = () => {
               type="text"
               id="name"
               name="name"
-           ss
+           
               
               required
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

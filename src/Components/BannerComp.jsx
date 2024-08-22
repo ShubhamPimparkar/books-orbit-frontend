@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Ensure axios is imported
+import axios from 'axios'; 
 import EffectCard from './EffectCard';
 import { Link, useNavigate } from 'react-router-dom';
 

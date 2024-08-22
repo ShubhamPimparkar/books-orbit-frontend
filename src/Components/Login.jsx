@@ -19,8 +19,8 @@ export const Login = () => {
     localStorage.setItem("isLogin",isLogin);
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission behavior
-        console.log(credentials)
+        e.preventDefault(); 
+     
         try {
             const response = await axios.post('http://localhost:8080/user/login', {
                 username: credentials.username,
@@ -34,7 +34,7 @@ export const Login = () => {
                 isLogin = true;
                 localStorage.setItem("isLogin",isLogin);
                 toast.success("Successfully logged in");
-                navigate("/"); // Redirect to home page or other destination
+                navigate("/"); 
             } else {
                 toast.error("Login failed. Please check your credentials.");
             }
@@ -48,11 +48,7 @@ export const Login = () => {
         <div>
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                    {/* <img
-                        alt="Logo"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        className="mx-auto h-10 w-auto"
-                    /> */}
+                
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                         Sign in to your account
                     </h2>

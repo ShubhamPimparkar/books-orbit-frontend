@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import React from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
@@ -31,7 +30,6 @@ export const SingleBook = () => {
       };
     return (
         <div className='mt-28 px-4 lg:px-24 '>
-
             <section className="py-8 bg-slate-200 rounded-xl md:py-16 dark:bg-gray-900  antialiased">
                 <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
                     <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-10">

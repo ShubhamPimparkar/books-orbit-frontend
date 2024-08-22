@@ -9,7 +9,7 @@ const FooterComp = () => {
         <div>
           <Footer.Title title="Books Orbit" />
           <Footer.LinkGroup col>
-            <Footer.Link href="#">About</Footer.Link>
+            <Footer.Link href="/contact">Contact Us</Footer.Link>
        
           </Footer.LinkGroup>
         </div>

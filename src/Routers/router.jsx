@@ -18,6 +18,9 @@ import { FavouriteComp } from "../Components/FavouriteComp";
 import { ManageUser } from "../dashboard/ManageUser";
 import { RegisterComp } from "../Components/RegisterComp";
 import { OrderPlaced } from "../Components/OrderPlaced";
+import ContactUs from "../Components/ContactUs";
+
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -30,6 +33,11 @@ const router = createBrowserRouter([
             {
                 path: '/favs',
                 element: <FavouriteComp />
+            },
+            
+            {
+                path: '/contact',
+                element: <ContactUs />
             },
 
             {

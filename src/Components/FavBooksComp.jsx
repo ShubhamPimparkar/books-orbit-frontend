@@ -7,7 +7,6 @@ export default function FavBooksComp() {
     const fetchBooks = async () => {
         try {
             const response = await axios.get('http://localhost:8080/books');
-        
             setBooks(response.data);
         } catch (error) {
             console.error(error);

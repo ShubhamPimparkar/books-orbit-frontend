@@ -3,7 +3,6 @@ import { Table } from "flowbite-react";
 
 const ManageBooks = () => {
 
-  // const navigate = useNavigate();
   const [allBooks, setAllBooks] = useState([]);
 
   useEffect(() => {
@@ -21,8 +20,6 @@ const ManageBooks = () => {
 
   }, []);
 
-  // Delete a book
-  // Delete a book
   const handleDelete = (bookId) => {
     fetch(`http://localhost:8080/books/${bookId}`, {
       method: "DELETE",
@@ -67,9 +64,7 @@ const ManageBooks = () => {
                   <Table.Cell>{book.quantity}</Table.Cell>
                   <Table.Cell>{"\u20B9"}{book.price}</Table.Cell>
                   <Table.Cell>
-                    {/* <Link to={`/admin/dashboard/edit/${book.bookId}`} className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-                      Edit
-                    </Link> */}
+        
                     <button onClick={() => handleDelete(book.bookId)} className='bg-red-600 py-1 font-semibold text-white rounded-lg px-4 ml-5'>Delete</button>
                   </Table.Cell>
                 </Table.Row>

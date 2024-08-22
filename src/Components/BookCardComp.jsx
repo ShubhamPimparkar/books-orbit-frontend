@@ -1,13 +1,8 @@
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { FaCartShopping } from 'react-icons/fa6'
-
-// import required modules
 import { Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
@@ -56,7 +51,7 @@ export const BookCardComp = ({ headline, booksprop }) => {
                                 <div>
                                     <div>
                                     <h3 className='font-bold text-blue-700'>{book.bookName}</h3>
-                                    {/* <p>{book.description}</p> */}
+                            
                                     </div>
                                     <div>
                                         <p className='font-bold'>₹{book.price}</p>

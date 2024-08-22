@@ -7,14 +7,11 @@ import { CategoryBanner } from './CategoryBanner'
 
 export default function HomeComp() {
   useEffect(() => {
-
   }, [location]);
 
   return (
-    <div className=''>
+    <div>
       <BannerComp></BannerComp>
-      {/* <div className='h-screen'></div>
-      <div className='h-screen bg-red-500'></div> */}
       <FavBooksComp></FavBooksComp>
       <PromoBanner></PromoBanner>
       <CategoryBanner></CategoryBanner>

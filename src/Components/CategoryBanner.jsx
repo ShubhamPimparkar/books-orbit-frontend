@@ -1,25 +1,23 @@
-import { Card } from 'flowbite-react';
+
 import React from 'react'
 import { Link } from 'react-router-dom';
-// import 'swiper/css';
-// import 'swiper/css/pagination';
+
 import { Pagination } from 'swiper/modules';
-import { FaCartShopping } from 'react-icons/fa6'
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 export const CategoryBanner = () => {
 
     const subTitle = "Choose Any Category";
-    const btnText = "Get Started Now";
 
     const categoryList = 
-    [{ imgUrl:'src/CategoryImgs/autobio.jpg' , imgAlt: 'category rajibraj91 rajibraj', iconName: 'icofont-brand-windows', title: 'Biography', },
-    { imgUrl: 'src/CategoryImgs/comic.jpg', imgAlt: 'category rajibraj91 rajibraj', iconName: 'icofont-brand-windows', title: 'Comics', },
-    { imgUrl: 'src/CategoryImgs/kids2.jpg', imgAlt: 'category rajibraj91 rajibraj', iconName: 'icofont-brand-windows', title: 'Tales', },
-    { imgUrl: 'src/CategoryImgs/fantasy.jpg', imgAlt: 'category rajibraj91 rajibraj', iconName: 'icofont-brand-windows', title: 'Fantasy', },
-    { imgUrl: 'src/CategoryImgs/thriller.jpg', imgAlt: 'category rajibraj91 rajibraj', iconName: 'icofont-brand-windows', title: 'Fiction', },
-    { imgUrl: 'src/CategoryImgs/mystery.jpg', imgAlt: 'category rajibraj91 rajibraj', iconName: 'icofont-brand-windows', title: 'Mystery', },]
+    [{ imgUrl:'src/CategoryImgs/autobio.jpg', title: 'Biography', },
+    { imgUrl: 'src/CategoryImgs/comic.jpg', title: 'Comics', },
+    { imgUrl: 'src/CategoryImgs/kids2.jpg',  title: 'Tales', },
+    { imgUrl: 'src/CategoryImgs/fantasy.jpg', title: 'Fantasy', },
+    { imgUrl: 'src/CategoryImgs/thriller.jpg', title: 'Fiction', },
+    { imgUrl: 'src/CategoryImgs/mystery.jpg', title: 'Mystery', },]
 
     return (
         <div className=''>
@@ -31,8 +29,6 @@ export const CategoryBanner = () => {
                 {/* Cards */}
                 <div>
                     <div className=' m-8 justify-between flex flex-row gap-12 flex-wrap'>
-                       
-
                     <Swiper
                     slidesPerView={1}
                     spaceBetween={10}

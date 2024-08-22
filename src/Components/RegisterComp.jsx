@@ -16,7 +16,6 @@ export const RegisterComp = () => {
         country: "",
         role: "SELLER"
     });
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setRegister({ ...register, [name]: value });

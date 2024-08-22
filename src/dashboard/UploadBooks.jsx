@@ -6,22 +6,9 @@ import { toast } from 'react-toastify';
 const UploadBooks = () => {
 
   const nav = useNavigate()
-  const bookCategories = [
-    "Fiction",
-    "Drama",
-    "Fantasy",
-    "Horror",
-    "Science"
-  ]
 
-  const [selectedBookCategory, setSelectedBookCategory] = useState(bookCategories[0]);
-
-  const handleChangeSelectedValue = async (event) => {
-    console.log(event.target.value);
-    setSelectedBookCategory(event.target.value);
-  }
   const userId = localStorage.getItem("userid");
-  //handle book submission
+
   const handleBookSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -30,7 +17,6 @@ const UploadBooks = () => {
     const sellerId = userId;
     const categoryId = form.categoryId.value;
     const imgUrl = form.imgUrl.value;
-    // const categoryName = form.categoryName.value;
     const price = form.price.value;
     const description = form.description.value;
     const quantity = form.quantity.value;
@@ -40,9 +26,9 @@ const UploadBooks = () => {
     }
     console.log(bookObj)
 
-    //send data to db
+  
     try {
-      // console.log("image",imgUrl)
+
       const response = await fetch("http://localhost:8080/books/add", {
         method: "POST",
         headers: {
@@ -58,7 +44,7 @@ const UploadBooks = () => {
       const data = await response.json();
       toast.success("Book updated successfully!");
       nav("/admin/dashboard/manage")
-      // form.reset();
+  
     } catch (error) {
       console.error("There was an error!", error);
       alert("There was an error submitting the book.");
@@ -91,14 +77,7 @@ const UploadBooks = () => {
 
         {/* seller id and category id */}
         <div className='flex gap-8'>
-          {/* <div className='lg:w-1/3'>
-            <div className="mb-2 block">
-              <Label htmlFor="seller" value="Seller Id" />
-            </div>
-            <input className="border-2 border-black-500 rounded-md p-1" id="sellerId" name='sellerId' type="number" placeholder="Enter Seller Id" required />
-          </div> */}
 
-          {/* Category Id*/}
           <div className='lg:w-1/3'>
             <div className="mb-2 block">
               <Label htmlFor="categoryId" value="Category Id " />
@@ -127,19 +106,7 @@ const UploadBooks = () => {
             </div>
             <Textarea name="description" id="description" placeholder='Write book description...' required className='w-full' rows={5} />
           </div>
-          {/* select category */}
-          {/* <div className='lg:w-1/3'>
-            <div className="mb-2 block">
-              <Label htmlFor="inputState" value="Book Category" />
-            </div>
-             <Select id='inputState' name='categoryName' className='w-full rounded' value={selectedBookCategory} onChange={handleChangeSelectedValue}>
-              {
-                bookCategories.map((option) =>
-                  <option className='p-5' key={option} value={option}>{option}</option>
-                )
-              }
-            </Select> 
-          </div> */}
+ 
         </div>
 
         {/* book price  and quantity*/}
@@ -161,7 +128,6 @@ const UploadBooks = () => {
           
         </div>
 
-        {/*Book Description and submit button*/}
         
 
       </form>

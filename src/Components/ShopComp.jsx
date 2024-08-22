@@ -2,30 +2,31 @@ import React, { useEffect, useState } from 'react'
 import { Card } from "flowbite-react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { toast  } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const ShopComp = () => {
-
   const [books, setBooks] = useState([]);
-  // const [cate, setCate] = useState([]);
   const [categories, setCategories] = useState({});
   const userId = localStorage.getItem("userid");
+
   const fetchData = async () => {
     try {
-      // Fetch books
+
       const booksResponse = await fetch("http://localhost:8080/books");
       const booksData = await booksResponse.json();
       setBooks(booksData);
 
-      // Fetch categories
       const categoryIds = [...new Set(booksData.map(book => book.categoryId.cateId))];
       const categoriesPromises = categoryIds.map(id =>
         fetch(`http://localhost:8080/category/${id}`).then(res => res.json())
+        
       );
+
       const categoriesData = await Promise.all(categoriesPromises);
       const categoriesMap = categoriesData.reduce((acc, category) => {
         acc[category.categoryId] = category.categoryName;
         return acc;
+        
       }, {});
       setCategories(categoriesMap);
     } catch (error) {
@@ -33,8 +34,8 @@ const ShopComp = () => {
     }
   };
   useEffect(() => {
-    
-  
+
+
     fetchData();
   }, []);
 
@@ -53,7 +54,7 @@ const ShopComp = () => {
     <div className='mt-20 px-4 lg:px-24'>
       <h3 className="mb-5 ml-2 mt-11 text-3xl text-blue-700 font-bold">Shop Items</h3>
       <div className='grid gap-8 my-12 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 grid-cols-1'>
-   
+
         {
           books.map(book => (
             <Card
@@ -63,13 +64,13 @@ const ShopComp = () => {
               imgSrc={book.imgUrl}
               href={`/books/${book.bookId}`}
             >
-              <figure className="">
-                <div className="badge badge-secondary font-bold text-xs text-red-500 ">
-           
-                  {categories[book.categoryId.cateId] || 'Loading..'}
-                </div>
-              
-              </figure>
+
+              <div className="badge badge-secondary font-bold text-xs text-red-500 ">
+
+                {categories[book.categoryId.cateId] || 'Loading..'}
+              </div>
+
+
               <Link to={`/books/${book.bookId}`}>
                 <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                   {book.bookName}
@@ -83,15 +84,15 @@ const ShopComp = () => {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                ₹{book.price}
+                  ₹{book.price}
                 </span>
                 <Link
                   to=""
                   className="rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  onClick={()=>addtocart(book.bookId)}
+                  onClick={() => addtocart(book.bookId)}
                 >
                   Add to cart
-                 
+
                 </Link>
               </div>
             </Card>
@@ -100,7 +101,7 @@ const ShopComp = () => {
       </div>
     </div>
   );
-  
+
 }
 
 export default ShopComp

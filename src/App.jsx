@@ -8,8 +8,7 @@ function App() {
     <>
     <NavbarComp></NavbarComp>
     <div className='min-h-screen'>
-    <Outlet/>
-      
+       <Outlet/>
     </div>
     <FooterComp></FooterComp>
     </>
